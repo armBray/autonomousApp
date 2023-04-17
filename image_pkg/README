@@ -1,0 +1,12 @@
+image_pkg
+
+prerequisites:
+rosbot_ros package at https://github.com/husarion/rosbot_ros/tree/noetic
+
+descriptio:
+allow to save an image retreived from the camera mounted on the rosbot in simulation mode
+
+usage:
+"Terminal 1"
+roslaunch image_kg image_saver.launch use_gazebo:=true
+
