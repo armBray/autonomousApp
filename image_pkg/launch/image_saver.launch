@@ -1,0 +1,18 @@
+<launch>
+
+    <arg name="use_gazebo" default="false"/>
+
+    <include unless="$(arg use_gazebo)" file="$(find astra_camera)/launch/astra.launch"/>
+    <include if="$(arg use_gazebo)" file="$(find rosbot_bringup)/launch/rosbot_tutorial.launch"/>
+
+    <!-- <include file="$(find image_pkg)/launch/image_saver.launch"/> -->
+
+    <node pkg="image_pkg" type="image_pkg_node" name="image_pkg_node" output="screen"/>
+
+    <node pkg="image_view" type="image_saver" name="image_saver">
+        <param name="save_all_image" value="false" />
+        <param name="filename_format" value="$(env HOME)/ros/image%04d.%s"/>
+        <remap from="/image" to="/camera/color/image_raw"/>
+    </node>
+
+</launch>
