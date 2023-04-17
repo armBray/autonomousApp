@@ -148,6 +148,10 @@ target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
 )
 
+add_executable(image_twist_control_node src/image_twist_control_node.cpp)
+target_link_libraries(image_twist_control_node
+  ${catkin_LIBRARIES}
+)
 #############
 ## Install ##
 #############
