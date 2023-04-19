@@ -2,6 +2,7 @@
 
     <arg name="use_gazebo" default="false" />
     <arg name="teach" default="false"/>
+    <arg name="rviz" default="false"/>
 
     <!-- Gazebo -->
     <group if="$(arg use_gazebo)">
@@ -23,8 +24,11 @@
     <!-- Object detection -->
     <node pkg="find_object_2d" type="find_object_2d" name="find_object_2d">
         <remap from="image" to="/camera/color/image_raw"/>
-        <param name="gui" value="$(arg teach)"/>
+        <!-- <param name="gui" value="$(arg teach)"/> -->
+        <param name="gui" value="true"/>
         <param unless="$(arg teach)" name="objects_path" value="$(find image_pkg)/image_data/"/>
     </node>
+
+    <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find image_pkg)/rviz/rosbot.rviz"/>
 
 </launch>
