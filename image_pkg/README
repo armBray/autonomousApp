@@ -14,6 +14,7 @@ description:
 A- save an image retreived from the camera mounted on the rosbot in simulation mode
 B- teaching objects recognition with find_object_2d package
 C- objects recognition with find_object_2d package
+D- objects following
 
 usage:
 ** A
@@ -30,3 +31,8 @@ roslaunch image_pkg camera_recognition.launch use_gazebo:=true
 "Terminal 2"
 rostopic echo /objects
 
+** D
+"Terminal 1"
+roslaunch image_pkg camera_recognition.launch use_gazebo:=true rviz:=true
+"Terminal 2"
+rosrun image_pkg follow_image
