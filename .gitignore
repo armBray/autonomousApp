@@ -31,7 +31,7 @@ rosbot_ros/
 .cproject
 
 # qcreator stuff
-CMakeLists.txt.user
+#CMakeLists.txt.user
 
 srv/_*.py
 *.pcd

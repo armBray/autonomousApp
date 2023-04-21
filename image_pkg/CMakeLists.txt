@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
 )
 
+find_package( OpenCV REQUIRED )
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -116,6 +118,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -147,6 +150,18 @@ add_executable(${PROJECT_NAME}_node src/image_pkg_node.cpp)
 target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
 )
+
+add_executable(image_twist_control_node src/image_twist_control_node.cpp)
+target_link_libraries(image_twist_control_node
+  ${catkin_LIBRARIES}
+)
+
+add_executable(follow_image src/follow_image.cpp)
+target_link_libraries(follow_image
+    ${catkin_LIBRARIES}
+    ${OpenCV_LIBRARIES}
+)
+
 
 #############
 ## Install ##
