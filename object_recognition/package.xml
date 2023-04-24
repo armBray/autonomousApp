@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>image_pkg</name>
+  <name>object_recognition</name>
   <version>0.0.0</version>
-  <description>The image_pkg package</description>
+  <description>The object_recognition package</description>
 
   <maintainer email="abray@todo.todo">abray</maintainer>
 

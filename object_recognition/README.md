@@ -1,4 +1,4 @@
-# image_pkg
+# object_recognition
 
 ## package required (inside workspace):
 - rosbot_ros package at https://github.com/husarion/rosbot_ros/tree/noetic
@@ -20,18 +20,16 @@ D - objects following
 **A** 
 ### Terminal 1
 ```
-roslaunch image_pkg image_saver.launch use_gazebo:=true
-```
 **B**
 ### Terminal 1
 ```
-roslaunch image_pkg camera_recognition.launch use_gazebo:=true teach:=true
+roslaunch object_recognition camera_recognition.launch use_gazebo:=true teach:=true
 ```
 
 **C**
 ### Terminal 1
 ```
-roslaunch image_pkg camera_recognition.launch use_gazebo:=true 
+roslaunch object_recognition camera_recognition.launch use_gazebo:=true 
 ```
 ### Terminal 2
 ```
@@ -41,9 +39,9 @@ rostopic echo /objects
 **D**
 ### Terminal 1
 ```
-roslaunch image_pkg camera_recognition.launch use_gazebo:=true rviz:=true
+roslaunch object_recognition camera_recognition.launch use_gazebo:=true rviz:=true
 ```
 ### Terminal 2
 ```
-rosrun image_pkg follow_image
+rosrun object_recognition follow_image
 ```
