@@ -26,9 +26,9 @@
         <remap from="image" to="/camera/color/image_raw"/>
         <!-- <param name="gui" value="$(arg teach)"/> -->
         <param name="gui" value="true"/>
-        <param unless="$(arg teach)" name="objects_path" value="$(find image_pkg)/image_data/"/>
+        <param unless="$(arg teach)" name="objects_path" value="$(find object_recognition)/image_data/"/>
     </node>
 
-    <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find image_pkg)/rviz/rosbot_camera_recognition.rviz"/>
+    <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find object_recognition)/rviz/rosbot_camera_recognition.rviz"/>
 
 </launch>

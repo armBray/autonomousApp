@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(image_pkg)
+project(object_recognition)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -104,7 +104,7 @@ find_package( OpenCV REQUIRED )
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES image_pkg
+#  LIBRARIES object_recognition
  CATKIN_DEPENDS roscpp
 #  DEPENDS system_lib
 )
@@ -123,7 +123,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/image_pkg.cpp
+#   src/${PROJECT_NAME}/object_recognition.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -134,7 +134,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME}_node src/image_pkg_node.cpp)
+add_executable(${PROJECT_NAME}_node src/object_recognition_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -210,7 +210,7 @@ target_link_libraries(follow_image
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_image_pkg.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_object_recognition.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
