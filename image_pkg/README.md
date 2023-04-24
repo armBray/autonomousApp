@@ -5,9 +5,9 @@
 
 ## package to install (sudo apt-get install):
 - teleop-twist-keyboard
-- find_object_2d
+- find-object-2d
 - usb-cam
-- camera_calibration
+- camera-calibration
 - camera-info-manager
 
 ## description:
