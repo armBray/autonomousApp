@@ -9,6 +9,7 @@
 - usb-cam
 - camera-calibration
 - camera-info-manager
+- explore-lite
 
 ## description:
 A - save an image retreived from the camera mounted on the rosbot in simulation mode\
