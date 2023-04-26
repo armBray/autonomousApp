@@ -3,10 +3,18 @@
     <arg name="use_gazebo" default="false"/>
     <arg name="save_images" default="false"/>
 
-    <include unless="$(arg use_gazebo)" file="$(find astra_camera)/launch/astra.launch"/>
-    <include if="$(arg use_gazebo)" file="$(find rosbot_bringup)/launch/rosbot_tutorial.launch"/>
+    <!-- Gazebo -->
+    <group if="$(arg use_gazebo)">
+        <param name="use_sim_time" value="true" />
+        <arg name="world" default="image_teaching"/>
 
-    <!-- <include file="$(find object_recognition)/launch/image_saver.launch"/> -->
+        <include file="$(find rosbot_bringup)/launch/rosbot_gazebo.launch"/>
+        <include file="$(find rosbot_gazebo)/launch/rosbot_world.launch">
+            <arg name="world" value="$(find rosbot_gazebo)/worlds/$(arg world).world"/>
+        </include>
+    </group>
+
+    <include unless="$(arg use_gazebo)" file="$(find astra_camera)/launch/astra.launch"/>
 
     <node pkg="object_recognition" type="object_recognition_node" name="object_recognition_node" output="screen"/>
 
