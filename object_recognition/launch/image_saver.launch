@@ -1,0 +1,33 @@
+<launch>
+
+    <arg name="use_gazebo" default="false"/>
+    <arg name="save_images" default="false"/>
+
+    <!-- Gazebo -->
+    <group if="$(arg use_gazebo)">
+        <param name="use_sim_time" value="true" />
+        <arg name="world" default="image_teaching"/>
+
+        <include file="$(find rosbot_bringup)/launch/rosbot_gazebo.launch"/>
+        <include file="$(find rosbot_gazebo)/launch/rosbot_world.launch">
+            <arg name="world" value="$(find rosbot_gazebo)/worlds/$(arg world).world"/>
+        </include>
+    </group>
+
+    <include unless="$(arg use_gazebo)" file="$(find astra_camera)/launch/astra.launch"/>
+
+    <node pkg="object_recognition" type="object_recognition_node" name="object_recognition_node" output="screen"/>
+
+    <node if="$(arg save_images)" pkg="image_view" type="image_saver" name="image_saver">
+        <param name="save_all_image" value="false" />
+        <param name="filename_format" value="$(env HOME)/ros/image%04d.%s"/>
+        <remap from="/image" to="/camera/color/image_raw"/>
+    </node>
+
+    <node pkg="image_view" type="image_view" name="image_view">
+        <remap from="/image" to="/camera/color/image_raw"/>
+    </node>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find object_recognition)/rviz/rosbot.rviz"/>
+
+</launch>
