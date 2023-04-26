@@ -32,4 +32,13 @@
         <param name="delta" value="0.1" />
     </node>
 
+  <node pkg="move_base" type="move_base" name="move_base" output="screen">
+    <param name="controller_frequency" value="10.0"/>
+    <rosparam file="$(find object_recognition)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find object_recognition)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find object_recognition)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find object_recognition)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find object_recognition)/config/trajectory_planner.yaml" command="load" />
+  </node>
+
 </launch>
