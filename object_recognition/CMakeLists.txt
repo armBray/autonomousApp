@@ -8,7 +8,7 @@ add_compile_options(-std=c++11)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
+  roscpp tf
 )
 
 find_package( OpenCV REQUIRED )
@@ -162,6 +162,10 @@ target_link_libraries(follow_image
     ${OpenCV_LIBRARIES}
 )
 
+add_executable(drive_controller_node src/drive_controller.cpp)
+target_link_libraries(drive_controller_node
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
