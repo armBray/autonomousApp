@@ -16,6 +16,7 @@ A - save an image retreived from the camera mounted on the rosbot in simulation 
 B - teaching objects recognition with find_object_2d package\
 C - objects recognition with find_object_2d package\
 D - objects following
+E - explore and save map
 
 ## usage:
 **A** 
@@ -45,4 +46,16 @@ roslaunch object_recognition camera_recognition.launch use_gazebo:=true rviz:=tr
 ### Terminal 2
 ```
 rosrun object_recognition follow_image
+```
+
+**E**
+### Terminal 1
+```
+roslaunch navigation_rosbot rosbot_exploration.launch use_gazebo:=true
+```
+### when all the unknown enviroment has been explored run the following
+### Terminal 2
+```
+cd maps
+rosrun map_server map_saver -f maze_map
 ```
