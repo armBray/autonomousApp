@@ -1,3 +1,10 @@
+/** This is a plan javascript that allows to communicate with ROS
+ *  thanks to the roslibjs and rosbridge_server packages.
+ *  You can find more on:
+ *  - https://wiki.ros.org/rosbridge_suite/
+ *  - https://github.com/RobotWebTools/roslibjs
+ */
+
 var ros = new ROSLIB.Ros({
   url: "ws://localhost:9090", /* rosbridge url */
 });
@@ -13,6 +20,7 @@ ros.on("close", function () {
 });
 
 // Publishing a Topic
+// roslaunch rosbot_bringup rosbot_rviz.launch
 //-------------------
 var cmdVel = new ROSLIB.Topic({
   ros: ros,
@@ -45,10 +53,10 @@ var listener = new ROSLIB.Topic({
   messageType: "sensor_msgs/LaserScan",
 });
 
-listener.subscribe(function (message) {
-  console.log(`Received message on ${listener.name}: ${message.ranges}`);
-  listener.unsubscribe();
-});
+// listener.subscribe(function (message) {
+//   console.log(`Received message on ${listener.name}: ${message.ranges}`);
+//   listener.unsubscribe();
+// });
 
 // Calling a Service
 // rosrun rospy_tutorials add_two_ints_server
@@ -64,11 +72,11 @@ var request = new ROSLIB.ServiceRequest({
   b: 2,
 });
 
-addTwoIntsClient.callService(request, function (result) {
-  console.log(
-    `Result for service call on ${addTwoIntsClient.name}: ${result.sum}`
-  );
-});
+// addTwoIntsClient.callService(request, function (result) {
+//   console.log(
+//     `Result for service call on ${addTwoIntsClient.name}: ${result.sum}`
+//   );
+// });
 
 // Getting and setting a param value
 //-------------------
@@ -83,13 +91,32 @@ var maxVely = new ROSLIB.Param({
 });
 
 
-maxVely.set(0.8);
-setTimeout(() => { console.log("Timeout finished!"); }, 1000); /**need to set a delay due to lag between set and get */
-maxVely.get(function (value) {
-    console.log('setting max_vel_y to:');
-    console.log(`MAX VAL: ${value}`);
-});
+// maxVely.set(0.8);
+// setTimeout(() => { console.log("Timeout finished!"); }, 1000); /**need to set a delay due to lag between set and get */
+// maxVely.get(function (value) {
+//     console.log('setting max_vel_y to:');
+//     console.log(`MAX VAL: ${value}`);
+// });
+function setMaxVely() {
+    return new Promise( (resolve, reject) => {        
+        console.log('Setting maxVely...')
+        maxVely.set(0.8)
+        setTimeout(() => {
+            resolve(
+                maxVely.get(function (value) {
+                    console.log(`settled max_vel_y to: ${value}`);
+                })
+            )
+        }, 1000) // wait delay and then execute body
+    })   
+}
     
+async function setMax(){
+    const data = await setMaxVely();
+}
+
+setMax()
+
 window.addEventListener("keydown", (event) => {
     if (event.defaultPrevented) {
     return; // Do nothing if the event was already processed
