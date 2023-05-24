@@ -6,8 +6,11 @@
  */
 
 var ros = new ROSLIB.Ros({
-  url: "ws://localhost:9090", /* rosbridge url */
+  url: "ws://localhost:9097", /* rosbridge url */
 });
+// or
+// var ros = new ROSLIB.Ros();
+// ros.connect('ws://localhost:9098');
 
 ros.on("connection", function () {
   console.log("Connected to websocket server.");

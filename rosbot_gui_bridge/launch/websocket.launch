@@ -1,0 +1,9 @@
+<launch>
+
+    <arg name="port" default="9096" />
+
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" >
+    <!-- dafualt port of launching -roslaunch rosbridge_server rosbridge_websocket.launch- is 9000 -->
+    <arg name="port" value="$(arg port)"/>
+  </include>
+</launch>
