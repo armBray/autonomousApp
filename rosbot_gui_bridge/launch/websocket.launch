@@ -6,4 +6,7 @@
     <!-- dafualt port of launching -roslaunch rosbridge_server rosbridge_websocket.launch- is 9000 -->
     <arg name="port" value="$(arg port)"/>
   </include>
+
+  <!-- <node pkg="rosbot_gui_bridge" type="npm-bash.sh" name="npm_bash" output="screen" /> -->
+  <node pkg="rosbot_gui_bridge" type="npm-bash.sh" name="npm_bash" />
 </launch>
