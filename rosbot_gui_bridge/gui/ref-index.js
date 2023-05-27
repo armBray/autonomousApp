@@ -47,6 +47,8 @@ var twist = new ROSLIB.Message({
 console.log("Publishing cmd_vel");
 console.log(twist);
 cmdVel.publish(twist);
+//-------------------
+
 
 // Subcribing a Topic
 //-------------------
@@ -60,6 +62,8 @@ var listener = new ROSLIB.Topic({
 //   console.log(`Received message on ${listener.name}: ${message.ranges}`);
 //   listener.unsubscribe();
 // });
+//-------------------
+
 
 // Calling a Service
 // rosrun rospy_tutorials add_two_ints_server
@@ -80,6 +84,8 @@ var request = new ROSLIB.ServiceRequest({
 //     `Result for service call on ${addTwoIntsClient.name}: ${result.sum}`
 //   );
 // });
+//-------------------
+
 
 // Getting and setting a param value
 //-------------------
@@ -92,7 +98,6 @@ var maxVely = new ROSLIB.Param({
   ros: ros,
   name: "max_vel_y",
 });
-
 
 // maxVely.set(0.8);
 // setTimeout(() => { console.log("Timeout finished!"); }, 1000); /**need to set a delay due to lag between set and get */
@@ -119,7 +124,11 @@ async function setMax(){
 }
 
 setMax()
+//-------------------
 
+
+// Getting event from keyboard
+//-------------------
 window.addEventListener("keydown", (event) => {
     if (event.defaultPrevented) {
     return; // Do nothing if the event was already processed
@@ -167,3 +176,18 @@ window.addEventListener("keydown", (event) => {
     },
     true
 );
+//-------------------
+
+
+// Getting images from topic
+//-------------------
+var img_listener = new ROSLIB.Topic({
+  ros : ros,
+  name : '/camera/color/image_raw/compressed',
+  messageType : 'sensor_msgs/CompressedImage'
+});
+  img_listener.subscribe(function(message) {
+  console.log('Received message on ' + img_listener.name);
+  document.getElementById('image_sub').src = "data:image/jpeg;base64," + message.data;
+  });
+//-------------------
