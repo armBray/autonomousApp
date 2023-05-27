@@ -27,10 +27,7 @@ function App() {
         <p className="title">
           Welcome to the <b>autonoomusApp</b>!
         </p>
-        <div className="description" >
-          <p> This application is developed and mantained by aBray. </p>
-          <p> For more information click the github icon or fill in the form. </p>
-        </div>
+        <p>Click on the Rosbot to Get Started!</p>
         <div className="footer">
             <button className="btn-form" >
               Form
@@ -43,6 +40,10 @@ function App() {
             >
               <img className="img-github" src={img_github} alt="img-github" />
             </a>
+        </div>
+        <div className="description" >
+          <p> This application is developed and mantained by aBray. </p>
+          <p> For more information click the github icon or fill in the form. </p>
         </div>
       </header>
     </div>
