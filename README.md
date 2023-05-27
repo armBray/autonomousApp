@@ -1,5 +1,5 @@
 # autonomousApp
-This ros application allow to interact with a simulation enviroment through a React framework in order to achieve some taks, such as:
+This ros application allows to interact with a simulation enviroment by means of a web application developed on a React framework in order to achieve some taks, such as:
 - Move the robot around
 - Build a map, manually or autonomoulsy, of unkown enviroments
 - Enumerate rooms
