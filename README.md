@@ -12,4 +12,18 @@ roslaunch rosbot_gui_bridge websocket.launch port:=9096
 
 ![gui-landing](images/landing.png)
 ![gui-menu](images/gui-menu.png)
+
+----------
+
+## Roadmap
+### ROS
+- room's enumeration
+- record path for analisys purpose
+- reproduce path
+### UI
+- autoremove caches
+- launch autonomous navigation
+- build map from scratch
+- upload map
+- show current coordinates
  
